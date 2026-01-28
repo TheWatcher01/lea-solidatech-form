@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --lea-pink: #D10074;
+    --lea-yellow: #FFB400;
+    --lea-gray: #575756;
+    --background: #F9F9F9;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 50%, #f5f5f5 100%);
+    color: var(--lea-gray);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Selection style */
+::selection {
+    background: var(--lea-pink);
+    color: white;
+}
+
+/* Scrollbar moderne */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--lea-pink) 0%, #a80060 100%);
+    border-radius: 5px;
+    border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e80082 0%, var(--lea-pink) 100%);
+}
+
+/* Focus visible pour l'accessibilité */
+*:focus-visible {
+    outline: 2px solid var(--lea-pink);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Animations globales */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(209, 0, 116, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(209, 0, 116, 0.4); }
+}
+
+/* Utilitaires custom */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--lea-pink) 0%, var(--lea-yellow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Input placeholders */
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+    opacity: 0.8;
+}
+
+/* Date input styling */
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Number input sans flèches */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Select custom arrow */
+select {
+    background-image: none;
+}
+
+/* Loader spinner */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
