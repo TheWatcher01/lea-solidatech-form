@@ -164,7 +164,11 @@ export async function POST(request: NextRequest) {
         const fileNames: string[] = [];
         const attachments: { filename: string; content: Buffer }[] = [];
 
-        for (const [key, value] of formData.entries()) {
+        // Utiliser Array.from pour compatibilité
+        const entries = Array.from(formData.entries());
+        for (const entry of entries) {
+            const key = entry[0];
+            const value = entry[1];
             if (value instanceof File) {
                 // Traiter les fichiers
                 const buffer = Buffer.from(await value.arrayBuffer());
